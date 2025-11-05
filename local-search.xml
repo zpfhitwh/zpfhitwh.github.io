@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Astron-agent</title>
+    <link href="/2025/11/05/Astron-agent/"/>
+    <url>/2025/11/05/Astron-agent/</url>
+    
+    <content type="html"><![CDATA[<h1 id="astron-Agent"><a href="#astron-Agent" class="headerlink" title="astron-Agent"></a>astron-Agent</h1><h2 id="1-环境配置与项目搭建（本地Windows11系统）"><a href="#1-环境配置与项目搭建（本地Windows11系统）" class="headerlink" title="1.环境配置与项目搭建（本地Windows11系统）"></a>1.环境配置与项目搭建（本地Windows11系统）</h2><p>按照微信公众号的步骤进行配置</p><blockquote><p><a href="https://mp.weixin.qq.com/s/QKp2nTKGl0m8JTytc-0ibA?scene=1&click_id=1">https://mp.weixin.qq.com/s/QKp2nTKGl0m8JTytc-0ibA?scene=1&amp;click_id=1</a></p></blockquote><p><em>注：首先要在本地电脑上配置git工具与Docker容器，并且后续命令都在git bash中执行。</em></p><p>配置过程中遇到的几个问题</p><ol><li>在用Docker容器拉取镜像时，一直报错显示</li></ol>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">unauthorized:email must be verified before using account<br></code></pre></td></tr></table></figure><p>最后发现是由于注册Docker账号时，官方会向注册邮箱中发送邮件，在邮件中确认之后问题解决。</p><ol start="2"><li>拉取完镜像之后，在Docker容器当中可以看到所有的镜像以及状态，发现<em>astron-agent-casdoor</em>容器一直显示”Restaring(2)”，并且本地进入不了localhost网址。检查到该容器报错为</li></ol><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">/entrypoint.sh: <span class="hljs-keyword">set</span>: <span class="hljs-type">line</span> <span class="hljs-number">2</span>: illegal <span class="hljs-keyword">option</span> - <br></code></pre></td></tr></table></figure><p>经检查，发现是因为脚本如果实在window环境下创建的，可能包含\r换行符，需要用以下命令将 <em>“D:\astron-agent\astron-agent\docker\astronAgent\casdoor\entrypoint.sh”</em> 目录下的文件转换为Unix格式，在该目录下的git bash中运行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sed -i <span class="hljs-string">&#x27;s/\r$//&#x27;</span> entrypoint.sh<br></code></pre></td></tr></table></figure><p>然后再重新拉取镜像，可以发现所有的镜像状态均为runing。</p><p>于是可以直接访问以下网址，启动 Casdoor 管理界面与Agent前端页面</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs b">#1. http://localhost:8000/<br>#2. http://localhost/<br>用户名：admin<br>密码：123<br></code></pre></td></tr></table></figure><p>界面如下：</p><img src="D:\hexo-blog\source\_posts\Astron-agent\image-20251030165004319.png" alt="image-20251030165004319" style="zoom: 25%;" /><img src="D:\hexo-blog\source\_posts\Astron-agent\image-20251030165038670.png" alt="image-20251030165038670" style="zoom: 25%;" /><h2 id="2-创建智能体"><a href="#2-创建智能体" class="headerlink" title="2.创建智能体"></a>2.创建智能体</h2><p>创建智能体之后，可以实现智能体的部署且可以进行文本提问与回答，</p><img src="D:\hexo-blog\source\_posts\Astron-agent\image-20251030181239606.png" alt="image-20251030181239606" style="zoom:25%;" /><p>存在的问题是，<strong>无法设置头像</strong></p><h3 id="部署本地第三方大模型"><a href="#部署本地第三方大模型" class="headerlink" title="部署本地第三方大模型"></a>部署本地第三方大模型</h3><img src="D:\hexo-blog\source\_posts\Astron-agent\image-20251030182511016.png" alt="image-20251030182511016" style="zoom:25%;" /><blockquote><p>接口地址：<a href="https://api.deepseek.com/v1">https://api.deepseek.com/v1</a><br>apiKey自己申请，这里用的deepseek，需要先充钱，不然显示创建失败</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>AI</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>agent</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>test</title>
     <link href="/2024/12/25/test/"/>
     <url>/2024/12/25/test/</url>
@@ -23,19 +48,6 @@
       <tag>这是一篇测试文件</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Hello World2</title>
-    <link href="/2024/12/25/hello-world%20-%20%E5%89%AF%E6%9C%AC/"/>
-    <url>/2024/12/25/hello-world%20-%20%E5%89%AF%E6%9C%AC/</url>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
     
   </entry>
   
