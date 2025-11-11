@@ -8,7 +8,7 @@
     <link href="/2025/11/10/ML-Notes/"/>
     <url>/2025/11/10/ML-Notes/</url>
     
-    <content type="html"><![CDATA[<h1 id="吴恩达《机器学习》教程个人学习笔记"><a href="#吴恩达《机器学习》教程个人学习笔记" class="headerlink" title="吴恩达《机器学习》教程个人学习笔记"></a>吴恩达《机器学习》教程个人学习笔记</h1><p>只用于记录笔者本人不会的内容或者一些新的思考，由于时间有限，暂时无法整理完整笔记。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="吴恩达《机器学习》教程个人学习笔记"><a href="#吴恩达《机器学习》教程个人学习笔记" class="headerlink" title="吴恩达《机器学习》教程个人学习笔记"></a>吴恩达《机器学习》教程个人学习笔记</h1><p>只用于记录笔者本人不会的内容或者一些新的思考，由于时间有限，暂时无法整理完整笔记。</p><h2 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h2><h3 id="回归"><a href="#回归" class="headerlink" title="回归"></a>回归</h3><p>代价函数，梯度下降法找到代价函数最小值，学习率：梯度下降的步长（0-1）</p><p>特征缩放，学习率的选择，特征工程。</p><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>逻辑回归</p><h2 id="无监督学习"><a href="#无监督学习" class="headerlink" title="无监督学习"></a>无监督学习</h2><p>聚类、异常检测、降维</p><p>（强化学习）</p>]]></content>
     
     
     <categories>
